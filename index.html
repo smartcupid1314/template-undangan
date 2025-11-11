@@ -104,7 +104,8 @@
 
 <body>
         <!-- <main id="app"> </main> -->
-        <div id="modalOverlay" class="modal-backdrop fade" style="display: none;"></div>
+        <div id="app">
+            <div id="modalOverlay" class="modal-backdrop fade" style="display: none;"></div>
         <!-- Loader -->
             <div id="loader" class="loader-wrapper"><span class="loader"><span class="loader-inner"></span></span></div>
         <!-- music -->
@@ -113,41 +114,42 @@
             </audio>
         <!-- end music -->
             <div id="workspace-container" class="position-fixed h-100 w-100" style="overflow: hidden">
-            <div id="panZoom" class="position-fixed h-100 w-100" style="top: 0; right:0; bottom:0; left:0; transform-origin: 50% 50%;">
-            <div class="h-100 w-100 d-flex align-items-center justify-content-center">
-            <div class="canvas not-open  ">
+                <div id="panZoom" class="position-fixed h-100 w-100" style="top: 0; right:0; bottom:0; left:0; transform-origin: 50% 50%;">
+                    <div class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <div class="canvas not-open  ">
         <!-- invitation -->
-            <div id="satuMomen" data-guest="Nama Tamu" data-group="VIP">
-            <div class="satumomen_track">
-            <ul class="satumomen_list">
-            <li class="satumomen_slide satumomen_cover">
-            <div class="container-mobile cover" style="background-image: url(bg.webp); ;">
-            <div class="frame">
-                <img class="frame-tl animate__animated animate__fadeInDown animate__slower" src="frame-tm.webp"
-                  alt="frame" style="width: 100%">
-                <img class="frame-bl animate__animated animate__fadeInUp animate__slower" src="frame-bm.webp"
-                  alt="frame" style="width: 100%">
+                    <div id="satuMomen" data-guest="Nama Tamu" data-group="VIP">
+                        <div class="satumomen_track">
+                        <ul class="satumomen_list">
+                        <li class="satumomen_slide satumomen_cover">
+                        <div class="container-mobile cover" style="background-image: url(bg.webp); ;">
+                        <div class="frame">
+                        <img class="frame-tl animate__animated animate__fadeInDown animate__slower" src="frame-tm.webp"
+                          alt="frame" style="width: 100%">
+                        <img class="frame-bl animate__animated animate__fadeInUp animate__slower" src="frame-bm.webp"
+                          alt="frame" style="width: 100%">
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center" style="height:100%;">
+                    <div style="width:100%;">
+                        <div class="animate__animated animate__fadeInDown animate__slower image-editable" style="width:70%;margin:auto;overflow:hidden;">
+                        <img src="gunungan.webp" style="width: 100%;height: 100%;object-fit: contain;" class="animate__animated animate__pulse animate__infinite infinite animate__slower" alt="gunungan.webp" />
+                    </div>
+        
+                    <div>
+                        <div class="text-center animate__animated animate__fadeInDown animate__slower mb-5">
+                        <div class="editable">Undangan Pernikahan</div>
+                        <div class="editable font-accent color-accent h3" style="font-size:32px;">Lusiana &amp; Agus</div>
+                        <div class="editable">13 . 12 . 25</div>
+                    </div>
+                    <div class="text-center">
+                          <div class="editable mb-2 animate__animated animate__fadeInUp animate__slower" style="font-size:14.4px;">Kepada Yth;<br />Bapak/Ibu/Saudara/i</div>
+                          <div id="guestNameSlot" class="editable color-accent h5 font-weight-bold mb-4 animate__animated animate__fadeInUp animate__slower"> Tamu Undangan</div>
+                          <button class="btn-open-invitation btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow">Buka Undangan</button>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center" style="height:100%;">
-            <div style="width:100%;">
-            <div class="animate__animated animate__fadeInDown animate__slower image-editable" style="width:70%;margin:auto;overflow:hidden;">
-                <img src="gunungan.webp" style="width: 100%;height: 100%;object-fit: contain;" class="animate__animated animate__pulse animate__infinite infinite animate__slower" alt="gunungan.webp" />
-            </div>
-
-            <div>
-                <div class="text-center animate__animated animate__fadeInDown animate__slower mb-5">
-                <div class="editable">Undangan Pernikahan</div>
-                <div class="editable font-accent color-accent h3" style="font-size:32px;">Lusiana &amp; Agus</div><div class="editable">13 . 12 . 25</div>
-            </div>
-            <div class="text-center">
-              <div class="editable mb-2 animate__animated animate__fadeInUp animate__slower" style="font-size:14.4px;">Kepada Yth;<br />Bapak/Ibu/Saudara/i</div>
-              <div id="guestNameSlot" class="editable color-accent h5 font-weight-bold mb-4 animate__animated animate__fadeInUp animate__slower"> Tamu Undangan</div>
-              <button class="btn-open-invitation btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow">Buka Undangan</button>
-            </div>
-      </div>
+        </div>
     </div>
-  </div>
-                                        </div>
                                     </li>
                                                                         <li class="satumomen_slide">
                                         <div class="container-mobile " style="background-image: url(bg.webp); ;">
@@ -832,7 +834,8 @@
             <div style="opacity: 0.5">Instrumental Lagu Jawa</div>
         </div>
             </div>
-    </main>
+    </div>
+    <!-- </main> -->
     <!-- illegal -->
     <div id="illegal" class="container-mobile" style="background: #ffffff; z-index: 9999; min-height: 100vh; display: flex; justify-content: center; align-items: center; display: none">
         <div class="modal-body modal-body d-flex flex-column align-items-center">
@@ -900,6 +903,7 @@
 
 
 </html>
+
 
 
 
