@@ -1097,9 +1097,8 @@ async function loadGuestbook() {
 
       box.innerHTML = `
         <div class="fw-bold">${item["Nama"]} 
-          <span class="text-muted" style="font-size:12px;">(${item["Kehadiran"]})</span>
+          <span class="text-muted" style="font-size:12px;">(${item["Kehadiran"]} - ${item["Jumlah Tamu"]})</span>
         </div>
-        <div>Jumlah tamu: ${item["Jumlah Tamu"]}</div>
         <div class="mt-1 fst-italic">${item["Ucapan"] || ""}</div>
       `;
 
@@ -1118,6 +1117,7 @@ document.addEventListener("DOMContentLoaded", loadGuestbook);
 
 
 </html>
+
 
 
 
