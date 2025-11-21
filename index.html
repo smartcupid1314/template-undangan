@@ -1106,6 +1106,11 @@ async function loadGuestbook() {
 
       container.appendChild(box);
     });
+      // Auto scroll ke atas setelah render selesai
+    setTimeout(() => {
+      const gl = document.getElementById("guestList");
+      gl.scrollTop = 0;
+    }, 50);
   } catch (err) {
     console.error("Guestbook load error:", err);
   }
@@ -1114,11 +1119,32 @@ async function loadGuestbook() {
 document.addEventListener("DOMContentLoaded", loadGuestbook);
 </script>
     <!-- End Script RSVP -->
+    
+<script>
+    // Matikan gesture swipe ketika scroll di guestlist
+    const guestList = document.getElementById("guestList");
+    
+    // mencegah slide-up/down saat scroll guestbook
+    guestList.addEventListener("touchstart", function(e){
+      e.stopPropagation();
+    }, { passive: true });
+    
+    guestList.addEventListener("touchmove", function(e){
+      e.stopPropagation();
+    }, { passive: true });
+    
+    // versi mouse (desktop)
+    guestList.addEventListener("wheel", function(e){
+      e.stopPropagation();
+    }, { passive: true });
+</script>
+
         <!-- end script -->
 </body>
 
 
 </html>
+
 
 
 
