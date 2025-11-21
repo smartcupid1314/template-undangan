@@ -405,7 +405,7 @@
   </div>
                                             <div class="d-flex p-3 pb-4 justify-content-center flex-column align-items-center" style="height:100%;overflow:hidden;background-color:var(--inv-border);border-radius:1.5rem;">
     <div style="height:100%;width:100%;overflow:hidden;border-radius:1rem;" class="image-editable mb-4 mx-auto animate__animated animate__fadeInDown animate__slower">
-        <img src="keduamempelai.jpg" style="width: 100%;height: 100%;object-fit: cover;" alt="keduamempelai.jpg" />
+        <img src="Foto (1).jpg" style="width: 100%;height: 100%;object-fit: cover;" alt="keduamempelai.jpg" />
       </div><div class="text-center mb-auto animate__animated animate__fadeInUp animate__slower">
         <div class="editable quotes mb-3" style="font-size:14px;">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</div>
         <div class="editable font-italic" style="font-size:14px;">Surah Ar Ruum : 21</div>
@@ -413,7 +413,57 @@
   </div>
                                         </div>
                                     </li>
-<!-- Invitation kirim ucapan -->
+<!-- Invitation Kirim ucapan & Guestbook -->
+                            <li class="satumomen_slide">
+  <div class="container-mobile" style="background-image: url(bg.webp);">
+    
+    <!-- Frame Atas & Bawah -->
+    <div class="frame">
+      <img class="frame-tl animate__animated animate__fadeInDown animate__slower" 
+           src="frame-tm.webp" alt="frame" style="width: 100%">
+      <img class="frame-bl animate__animated animate__fadeInUp animate__slower" 
+           src="frame-bm.webp" alt="frame" style="width: 100%">
+    </div>
+
+    <!-- Konten Box -->
+    <div class="d-flex p-3 pb-4 justify-content-center flex-column align-items-center"
+         style="height:100%;overflow:hidden;background-color:var(--inv-border);border-radius:1.5rem;">
+
+      <!-- Foto / Cover (Opsional) -->
+      <div style="height:100%;width:100%;overflow:hidden;border-radius:1rem;"
+           class="image-editable mb-4 mx-auto animate__animated animate__fadeInDown animate__slower">
+        <img src="Foto (10).jpg"
+             style="width: 100%;height: 100%;object-fit: cover;" />
+      </div>
+
+      <!-- Judul -->
+      <div class="text-center mb-3 animate__animated animate__fadeInUp animate__slower">
+        <div class="editable font-accent font-weight-bold mb-3" style="font-size:30px;">
+          Guest Book
+        </div>
+        <div class="editable" style="font-size:14px;">
+          Kirim do'a dan ucapan anda serta<br>
+          konfirmasi kehadiran dengan klik tombol<br>
+          dibawah ini
+        </div>
+      </div>
+
+      <!-- Tombol Buka Modal RSVP -->
+      <button class="btn-rsvp btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow"
+              onclick="openModal(rsvpModal)">
+        Konfirmasi & Kirim Ucapan
+      </button>
+
+      <!-- ❤️ Guestbook List Tampil di Sini -->
+      <div id="guestList" 
+           class="p-2 mt-3 w-100"
+           style="max-height:30vh;overflow-y:auto;"></div>
+
+    </div>
+  </div>
+</li>
+
+<!-- Invitation kirim ucapan
                                                                         <li class="satumomen_slide">
                                         <div class="container-mobile " style="background-image: url(bg.webp); ;">
                                               <div class="frame">
@@ -424,7 +474,7 @@
   </div>
                                             <div class="d-flex p-3 pb-4 justify-content-center flex-column align-items-center" style="height:100%;overflow:hidden;background-color:var(--inv-border);border-radius:1.5rem;">
     <div style="height:100%;width:100%;overflow:hidden;border-radius:1rem;" class="image-editable mb-4 mx-auto animate__animated animate__fadeInDown animate__slower">
-        <img src="Foto (1).jpg" style="width: 100%;height: 100%;object-fit: cover;" alt="keduamempelai.jpg" />
+        <img src="Foto (10).jpg" style="width: 100%;height: 100%;object-fit: cover;" alt="keduamempelai.jpg" />
       </div><div class="text-center mb-4 animate__animated animate__fadeInUp animate__slower">
         <div class="editable font-accent font-weight-bold mb-3" style="font-size:30px;">Guest Book</div>
         <div class="editable" style="font-size:14px;">Kirim do'a dan ucapan anda serta<br />konfirmasi kehadiran dengan klik tombol<br />dibawah ini</div>
@@ -971,6 +1021,7 @@
     </script>
 
     <!-- Start RSVP Script -->
+<!--
         <script>
      // ==== GANTI DENGAN URL SCRIPT GOOGLE KAMU ==== const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIOBg6ZDOqpC9hgMYa6ML6A0-I9gwMZcEV-X6kaIDmmBOOG4feC8rTRW9MvoIglTmX/exec";
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCmgs3Yhi3GkWCZRwjkckLhYiMdC1kLMggRW0-BuQmIM1O_sBIzJ2Zazpe18Abfov/exec";
@@ -999,12 +1050,75 @@
       }
     });
     </script>
+-->
+    <script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCmgs3Yhi3GkWCZRwjkckLhYiMdC1kLMggRW0-BuQmIM1O_sBIzJ2Zazpe18Abfov/exec";
+
+// --- Submit RSVP ---
+document.getElementById("rsvpForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    nama: form.nama.value,
+    kehadiran: form.kehadiran.value,
+    jumlah: form.jumlah.value,
+    ucapan: form.ucapan.value
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    alert("RSVP berhasil dikirim!");
+    closeModal(rsvpModal);
+
+    loadGuestbook(); // refresh guestbook
+  } catch (err) {
+    alert("Gagal mengirim RSVP.");
+  }
+});
+
+// --- Load Guestbook ---
+async function loadGuestbook() {
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const rows = await res.json();
+
+    const container = document.getElementById("guestList");
+    container.innerHTML = "";
+
+    rows.slice(1).reverse().forEach(item => {
+      const box = document.createElement("div");
+      box.className = "p-3 mb-3 rounded shadow-sm";
+      box.style.background = "#fafafa";
+
+      box.innerHTML = `
+        <div class="fw-bold">${item["Nama"]} 
+          <span class="text-muted" style="font-size:12px;">(${item["Kehadiran"]})</span>
+        </div>
+        <div>Jumlah tamu: ${item["Jumlah Tamu"]}</div>
+        <div class="mt-1 fst-italic">${item["Ucapan"] || ""}</div>
+      `;
+
+      container.appendChild(box);
+    });
+  } catch (err) {
+    console.error("Guestbook load error:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadGuestbook);
+</script>
     <!-- End Script RSVP -->
         <!-- end script -->
 </body>
 
 
 </html>
+
 
 
 
