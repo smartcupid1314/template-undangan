@@ -1010,15 +1010,7 @@
           method: "POST",
           body: JSON.stringify(data),
         });
-           // Kirim notifikasi WA otomatis
-            const pesan =
-              `RSVP Baru:%0A` +
-              `Nama: ${data.nama}%0A` +
-              `Kehadiran: ${data.kehadiran}%0A` +
-              `Jumlah Tamu: ${data.jumlah}%0A` +
-              `Ucapan: ${data.ucapan}`;
-        
-            window.open(`https://wa.me/${WHATSAPP_OWNER}?text=${pesan}`, "_blank");
+          
         alert("RSVP berhasil dikirim!");
         closeModal(rsvpModal);
       } catch (err) {
@@ -1066,6 +1058,7 @@
 
 
 </html>
+
 
 
 
