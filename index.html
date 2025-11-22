@@ -99,6 +99,19 @@
             font-family: 'Heatwood';
             line-height: 3 !important;
         }
+        /* Modal agar tidak mengunci tinggi */
+        #rsvpModal .modal-dialog {
+          margin: 0 !important;
+          height: auto;
+          max-height: 100vh;
+          display: flex;
+          align-items: center;
+        }
+        
+        #rsvpModal .modal-content {
+          max-height: 90vh;
+          overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -1053,38 +1066,38 @@
     });
     </script>
 -->
-    <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCmgs3Yhi3GkWCZRwjkckLhYiMdC1kLMggRW0-BuQmIM1O_sBIzJ2Zazpe18Abfov/exec";
-
-// --- Submit RSVP ---
-document.getElementById("rsvpForm").addEventListener("submit", async function(e){
-  e.preventDefault();
-
-  const form = e.target;
-  const data = {
-    nama: form.nama.value,
-    kehadiran: form.kehadiran.value,
-    jumlah: form.jumlah.value,
-    ucapan: form.ucapan.value
-  };
-
-  try {
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(data),
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqCmgs3Yhi3GkWCZRwjkckLhYiMdC1kLMggRW0-BuQmIM1O_sBIzJ2Zazpe18Abfov/exec";
+    
+    // --- Submit RSVP ---
+    document.getElementById("rsvpForm").addEventListener("submit", async function(e){
+      e.preventDefault();
+    
+      const form = e.target;
+      const data = {
+        nama: form.nama.value,
+        kehadiran: form.kehadiran.value,
+        jumlah: form.jumlah.value,
+        ucapan: form.ucapan.value
+      };
+    
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+    
+        alert("RSVP berhasil dikirim!");
+        closeModal(rsvpModal);
+    
+        loadGuestbook(); // refresh guestbook
+      } catch (err) {
+        alert("Gagal mengirim RSVP.");
+      }
     });
-
-    alert("RSVP berhasil dikirim!");
-    closeModal(rsvpModal);
-
-    loadGuestbook(); // refresh guestbook
-  } catch (err) {
-    alert("Gagal mengirim RSVP.");
-  }
-});
-
-// --- Load Guestbook ---
-async function loadGuestbook() {
+    
+    // --- Load Guestbook ---
+    async function loadGuestbook() {
   try {
     const res = await fetch(SCRIPT_URL);
     const rows = await res.json();
@@ -1106,37 +1119,59 @@ async function loadGuestbook() {
 
       container.appendChild(box);
     });
-      // Auto scroll ke atas setelah render selesai
-    setTimeout(() => {
-      const gl = document.getElementById("guestList");
-      gl.scrollTop = 0;
-    }, 50);
+
+    // AUTO SCROLL KE ATAS
+    container.scrollTop = 0;
+
   } catch (err) {
     console.error("Guestbook load error:", err);
   }
 }
-
-document.addEventListener("DOMContentLoaded", loadGuestbook);
+    
+    document.addEventListener("DOMContentLoaded", loadGuestbook);
 </script>
     <!-- End Script RSVP -->
     
 <script>
-    // Matikan gesture swipe ketika scroll di guestlist
     const guestList = document.getElementById("guestList");
     
-    // mencegah slide-up/down saat scroll guestbook
     guestList.addEventListener("touchstart", function(e){
-      e.stopPropagation();
+      window.isScrollingGuestbook = true;
+      e.stopImmediatePropagation();
+    }, { passive: true });
+    
+    guestList.addEventListener("touchend", function(e){
+      setTimeout(() => window.isScrollingGuestbook = false, 50);
     }, { passive: true });
     
     guestList.addEventListener("touchmove", function(e){
-      e.stopPropagation();
+      e.stopImmediatePropagation();
     }, { passive: true });
+</script>
+
+<!-- Ini membuat modal ikut naik ketika keyboard muncul -->
+<script>
+    const modalContent = document.querySelector("#rsvpModal .modal-content");
     
-    // versi mouse (desktop)
-    guestList.addEventListener("wheel", function(e){
-      e.stopPropagation();
-    }, { passive: true });
+    window.addEventListener("resize", () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      if (modalContent) {
+        modalContent.style.maxHeight = (window.innerHeight - 20) + "px";
+      }
+    });
+</script>
+
+<!-- efek modal otomatis menggeser ke field yang sedang diisi -->
+<script>
+document.querySelectorAll("#rsvpForm input, #rsvpForm textarea, #rsvpForm select")
+  .forEach(el => {
+    el.addEventListener("focus", () => {
+      setTimeout(() => {
+        el.scrollIntoView({behavior: "smooth", block: "center"});
+      }, 300);
+    });
+  });
 </script>
 
         <!-- end script -->
@@ -1144,6 +1179,7 @@ document.addEventListener("DOMContentLoaded", loadGuestbook);
 
 
 </html>
+
 
 
 
